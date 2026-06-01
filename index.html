@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chess Masters</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<!-- [YENİ] Piyon Terfi Seçim Ekranı (Modal Pop-up) -->
+<div id="promotionModal" class="promotion-modal hidden">
+    <div class="promotion-content">
+        <h3>Promote Pawn To:</h3>
+        <div class="promotion-options">
+            <button data-piece="Q" title="Queen"><img id="promo-Q" src="" alt="Queen"></button>
+            <button data-piece="R" title="Rook"><img id="promo-R" src="" alt="Rook"></button>
+            <button data-piece="B" title="Bishop"><img id="promo-B" src="" alt="Bishop"></button>
+            <button data-piece="N" title="Knight"><img id="promo-N" src="" alt="Knight"></button>
+        </div>
+    </div>
+</div>
+<body>
+    <div id="notification-container"></div>
+    <div class="game-container">
+        
+        <div id="screen-1" class="page-screen">
+            <h1>Welcome to Chess Masters</h1>
+            <p class="subtitle">A digital traditional chess board game</p>
+            <button id="btnNextToModes" class="menu-btn">Play Game</button>
+        </div>
+
+        <div id="screen-2" class="page-screen hidden">
+            <h2>Select Game Mode</h2>
+            <div class="mode-options">
+                <label class="mode-card">
+                    <input type="radio" name="gameMode" value="multiplayer">
+                    <span>Local Multiplayer (2 Player)</span>
+                </label>
+                <label class="mode-card">
+                    <input type="radio" name="gameMode" value="ai">
+                    <span>Versus AI Opponent</span>
+                </label>
+            </div>
+            
+            <div id="aiColorSelection" class="color-selection hidden">
+                <h3>Choose Your Color</h3>
+                <div class="mode-options">
+                    <label class="mode-card">
+                        <input type="radio" name="playerColor" value="White" checked>
+                        <span>Play as White (First Move)</span>
+                    </label>
+                    <label class="mode-card">
+                        <input type="radio" name="playerColor" value="Black">
+                        <span>Play as Black (AI Moves First)</span>
+                    </label>
+                </div>
+            </div>
+
+            <div id="timerSelection" class="timer-selection hidden">
+                <h3>Select Game Timer</h3>
+                <div class="mode-options">
+                    <label class="mode-card">
+                        <input type="radio" name="gameTime" value="10" checked>
+                        <span>Rapid (10 Minutes)</span>
+                    </label>
+                    <label class="mode-card">
+                        <input type="radio" name="gameTime" value="15">
+                        <span>Rapid (15 Minutes)</span>
+                    </label>
+                    <label class="mode-card">
+                        <input type="radio" name="gameTime" value="30">
+                        <span>Classical (30 Minutes)</span>
+                    </label>
+                    <label class="mode-card">
+                        <input type="radio" name="gameTime" value="unlimited">
+                        <span>No Time (Unlimited)</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button id="btnStart" class="menu-btn hidden">Start Game</button>
+        </div>
+
+        <div id="screen-3" class="page-screen hidden">
+            <h1 class="game-title">Chess Masters</h1>
+            <div id="gameModeIndicator" class="mode-indicator"></div>
+            
+            <div class="timers-wrapper">
+                <div id="timerWhite" class="player-timer active-turn">White: --:--</div>
+                <div id="timerBlack" class="player-timer">Black: --:--</div>
+            </div>
+            
+            <div class="main-game-layout">
+                <div class="captured-panel" id="capturedByBlack">
+                    <h4>Captured White</h4>
+                    <div class="captured-pieces-list"></div>
+                </div>
+
+                <div id="chessboard"></div>
+
+                <div class="right-sidebar">
+                    <div class="captured-panel" id="capturedByWhite">
+                        <h4>Captured Black</h4>
+                        <div class="captured-pieces-list"></div>
+                    </div>
+                    
+                    <div class="history-panel">
+                        <h4>Move History</h4>
+                        <div id="moveHistoryList" class="history-list"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="controls">
+                <button id="btnRestart">Restart Game</button>
+                <button id="btnBackToMenu">Back to Menu</button>
+                <button id="btnExit">Exit to Launcher</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
